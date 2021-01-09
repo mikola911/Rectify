@@ -55,7 +55,7 @@
 	- SCL 21
 
 # Software
-
+пока предполагается разработка в рамках [PlatformIO](https://platformio.org/ "PlatformIO - professional collaborative platform for embedded development")
 
 # Техпроцесс
 ## Суть процесса ректификации
