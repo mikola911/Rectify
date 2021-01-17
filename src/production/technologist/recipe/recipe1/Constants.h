@@ -80,6 +80,26 @@
 #define technologicalBreakServoPosition 15
 
 
+//Отбор спирта
+
+/**
+ * Уголо поворота сервопривода при котором отбор спирта прекращен
+ */
+#define nodeSelectionCloseAngle 0
+
+/**
+ * Уголо поворота сервопривода при котором отбор спирта идет.
+ */
+#define nodeSelectionOpenAngle 230
+/**
+ * Дельа температуры на которую можно превышать при отборе голов.
+ */
+#define nodeSelectionDeltaTemp 0.5
+/**
+* Максимальное время которое прошло закрытия клапана в течении которого температура не падает.
+*/
+#define ladgeTempAfterClosingTimeMax 1000*20
+
 
 #ifndef _MOONSHINE_CONSTANTS_H
 #define _MOONSHINE_CONSTANTS_H

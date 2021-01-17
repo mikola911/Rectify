@@ -3,7 +3,7 @@
 //
 #include "production/technologist/recipe/recipe1/Constants.h"
 #include "production/technologist/recipe/recipe1/ErrorCodes.h"
-#include "S2HeadSelection.h"
+#include "S2Head.h"
 
 int S2Head::action() {
     updateTemp();

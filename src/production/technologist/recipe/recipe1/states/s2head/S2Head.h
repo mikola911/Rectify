@@ -6,11 +6,11 @@
 #define _MOONSHINE_S3HEADSELECTION_H
 
 
-class S2HeadSelection : public IRecipe1State {
+class S2Head : public IRecipe1State {
 
 public:
     int  action() override;
-    S2HeadSelection(MoonshineMashine *moonshineMashine) : IRecipe1State(moonshineMashine){};
+    S2Head(MoonshineMashine *moonshineMashine) : IRecipe1State(moonshineMashine){};
 
 private:
 

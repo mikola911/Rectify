@@ -5,10 +5,11 @@
 #include "production/technologist/recipe/recipe1/states/IRecipe1State.h"
 #include "production/technologist/recipe/recipe1/states/s0init/S0Init.h"
 #include "production/technologist/recipe/recipe1/states/s1preheating/S1Preheating.h"
-#include "production/technologist/recipe/recipe1/states/s2headselection/S2HeadSelection.h"
-#include "production/technologist/recipe/recipe1/states/s3technologicalpause/S3HeadSelection.h"
-#include "production/technologist/recipe/recipe1/states/s4alcoholselection/S4TechnologicalBreak.h"
+#include "production/technologist/recipe/recipe1/states/s2head/S2Head.h"
+#include "production/technologist/recipe/recipe1/states/s3headselection/S3HeadSelection.h"
+#include "production/technologist/recipe/recipe1/states/s4technologicalbreak/S4TechnologicalBreak.h"
 #include "production/technologist/recipe/recipe1/states/s5tailcollection/S5TailCollection.h"
+#include "production/technologist/recipe/recipe1/states/s6alcoholselection/S6AlcoholSelection.h"
 #ifndef _MOONSHINE_RECIPE1_H
 #define _MOONSHINE_RECIPE1_H
 
@@ -29,10 +30,11 @@ public:
         IRecipe1State __states[6] = {
                 S0Init(moonshineMashine),
                 S1Preheating(moonshineMashine),
-                S2HeadSelection(moonshineMashine),
-                S3TechnologicalPause(moonshineMashine),
-                S4AlcoholSelection(moonshineMashine),
-                S5TailCollection(moonshineMashine)};
+                S2Head(moonshineMashine),
+                S3HeadSelection(moonshineMashine),
+                S4TechnologicalBreak(moonshineMashine),
+                S5TailCollection(moonshineMashine),
+                S6AlcoholSelection(moonshineMashine)};
         states = __states;
     }
 
