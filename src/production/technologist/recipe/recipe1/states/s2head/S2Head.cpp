@@ -5,7 +5,7 @@
 #include "production/technologist/recipe/recipe1/ErrorCodes.h"
 #include "S2HeadSelection.h"
 
-int S2HeadSelection::action() {
+int S2Head::action() {
     updateTemp();
     updateConstantTempTimeAction();
     int errorCode = checkError();
@@ -21,14 +21,14 @@ int S2HeadSelection::action() {
     return 1;
 }
 
-void S2HeadSelection::updateConstantTempTimeAction() {
+void S2Head::updateConstantTempTimeAction() {
     //!!!AHTUNG!!!!
     if(previousTemp>moonshineMashine->t1GetTemp()+ heatDeltaTemp) {
         constantTempTime = millis();
     }
 }
 
-int S2HeadSelection::checkError() {
+int S2Head::checkError() {
     if(moonshineMashine->t1GetTemp()> heatTempErrorMax)
     {
         return TEMP_LARGE_ERROR;
