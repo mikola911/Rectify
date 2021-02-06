@@ -4,7 +4,7 @@
 .vscode/launch.json
 .vscode/ipch
 .DS_Store
-legacy/vs/.vs
-legacy/vs/__vm
-legacy/vs/Debug
-legacy/vs/Libraries
+legacy/vs/moonshine/.vs/
+legacy/vs/moonshine/__vm/
+legacy/vs/moonshine/Debug/
+legacy/vs/moonshine/Libraries/
