@@ -6,7 +6,7 @@
 
 MoonshineMashine::MoonshineMashine() {
     Serial.begin(115200);
-    Serial.println(F(“MoonshineMashine starting”))
+    Serial.println('MoonshineMashine starting');
 
     display.setBrightness(0x0f);
     display.showNumberDec(0000);
@@ -22,13 +22,16 @@ MoonshineMashine::MoonshineMashine() {
 void MoonshineMashine::s1Rotate(int angle) {
     servoValve.attach(servoPin);
     servoValve.write(angle);
-    delay(100);
+	Serial.print("s1Rotate: ");
+	Serial.println(angle);
+    delay(1000);
     servoValve.detach();
 }
 
 float MoonshineMashine::t1GetTemp() {
     sensor.requestTemperatures();
     t1_temp = sensor.getTempC();
+    showTemp();
     return t1_temp;
 }
 
@@ -38,10 +41,22 @@ void MoonshineMashine::showTemp() {
 
 void MoonshineMashine::sayHello() {
     lcd.setCursor(0,0);
-    lcd.print("Arduino i2c 20x4 LCD");
+    lcd.print("Arduino i2cLCD BEGIN");
 }
 
 void d2Write(int index, int rowNumber, char line[]) {
     lcd.setCursor(index,rowNumber);
     lcd.print(line);
+}
+
+void MoonshineMashine::buzzerOff() {
+	digitalWrite(buzzer, 0);
+}
+
+void MoonshineMashine::buzzerOn(){
+	digitalWrite(buzzer, 1);
+}
+
+bool MoonshineMashine::isNextButtonPressed() {
+    return true; 
 }

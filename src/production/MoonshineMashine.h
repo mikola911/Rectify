@@ -21,6 +21,7 @@
 #define btn 27
 #define ledCLK 52
 #define ledDIO 10
+#define I2C_ADR 0x27
 
 /**
  * Рулит самогонным аппаратом.
@@ -81,17 +82,17 @@ private:
      */
     float t1_temp;
 
-    OneWire oneWire(ONE_WIRE_BUS);
+    OneWire oneWire = OneWire(ONE_WIRE_BUS);
 
-    DS18B20 sensor(&oneWire);
+    DS18B20 sensor = DS18B20(&oneWire);
 
     Servo servoValve;
 
     // Encoder enc(encCLK, encDT, btn);
 
-    TM1637Display display(ledCLK, ledDIO);
+    TM1637Display display = TM1637Display(ledCLK, ledDIO);
 
-    LiquidCrystal_I2C lcd(0x27, 20, 4);
+    LiquidCrystal_I2C lcd = LiquidCrystal_I2C(I2C_ADR, 20, 4);
 
     /**
      * Вывести на отдельный дисплей температуру с термосенсора 1
