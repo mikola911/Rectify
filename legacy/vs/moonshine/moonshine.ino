@@ -13,15 +13,6 @@
   by Scott Fitzgerald
  */
 
-
-// the setup function runs once when you press reset or power the board
-
-#include <TM1637Display.h>
-#include <LiquidCrystal_I2C.h>
-#include <DS18B20.h>
-#include <OneWire.h>
-#include <Servo.h>
-#include <Wire.h>
 #include "MoonshineMashine.h"
 #include "Recipe1.h"
 void setup() {
@@ -32,5 +23,5 @@ void setup() {
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
+	Serial.println('Loop');
 }

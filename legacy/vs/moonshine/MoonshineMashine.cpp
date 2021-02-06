@@ -29,7 +29,9 @@ void MoonshineMashine::s1Rotate(int angle) {
 }
 
 float MoonshineMashine::t1GetTemp() {
+	sensor.setResolution(11); //12bit, 1/16deg - max resolution
     sensor.requestTemperatures();
+	while (!sensor.isConversionComplete()) {}; //#FIXME - delay about 750ms
     t1_temp = sensor.getTempC();
 	//Serial.print("Temp: ");
 	//Serial.println(t1_temp);
@@ -53,13 +55,14 @@ void MoonshineMashine::d2Write(int index, int rowNumber, String line) {
 
 void MoonshineMashine::buzzerOff()
 {
-	digitalWrite(buzzer, 0);
+	digitalWrite(buzzer, 0); // #FIXME - wrong call
 }
 void MoonshineMashine::buzzerOn()
 {
-	digitalWrite(buzzer, 1);
+	digitalWrite(buzzer, 1); // #FIXME - wrong call
 }
 bool MoonshineMashine::isNextButtonPressed()
 {
-    return true;// ŒÀﬂ, –≈¿À»«”… ›“Œ
+	return true;// #FIXME - read encoder btn with debounce
 }
+

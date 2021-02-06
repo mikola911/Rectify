@@ -1,6 +1,6 @@
 C:\Users\Admin\AppData\Local\Temp\VMBuilds\moonshine\mega_atmega2560\Debug\TM1637Display\TM1637Display.cpp.o: \
- C:\Users\Admin\Desktop\moonshine\Libraries\TM1637Display\1.2.0\TM1637Display\TM1637Display.cpp \
- C:\Users\Admin\Desktop\moonshine\Libraries\TM1637Display\1.2.0\TM1637Display/TM1637Display.h \
+ G:\ForMyself\Rectify\legacy\vs\moonshine\Libraries\TM1637Display\1.2.0\TM1637Display\TM1637Display.cpp \
+ G:\ForMyself\Rectify\legacy\vs\moonshine\Libraries\TM1637Display\1.2.0\TM1637Display/TM1637Display.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
