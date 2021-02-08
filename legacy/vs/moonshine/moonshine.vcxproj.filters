@@ -54,9 +54,6 @@
     <ClInclude Include="Preheating.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Head.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HeadSelection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -70,6 +67,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Recipe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,9 +86,6 @@
     <ClCompile Include="Preheating.cpp">
       <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
-    <ClCompile Include="Head.cpp">
-      <Filter>Source Files\production\recipe\states</Filter>
-    </ClCompile>
     <ClCompile Include="HeadSelection.cpp">
       <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
@@ -103,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files\production\recipe</Filter>
+    </ClCompile>
+    <ClCompile Include="Heat.cpp">
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

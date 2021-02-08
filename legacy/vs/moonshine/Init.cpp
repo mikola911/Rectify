@@ -19,6 +19,8 @@ int Init::action() {
 */
 
 int Init::selfCheck() {
+	moonshineMashine->sayHello();
+	while (!moonshineMashine->isNextButtonPressed()) { moonshineMashine->t1GetTemp(); }
     return 1;
 }
 

@@ -10,10 +10,10 @@ void IRecipe1State::updateTemp() {
 }
 
 void IRecipe1State::waitOperatorAction() {
-    moonshineMashine->buzzerOn();
     while (!moonshineMashine->isNextButtonPressed())
     {
-
+		moonshineMashine->buzzerOn();
+		moonshineMashine->t1GetTemp(); // we can't idle without temp
     }
     moonshineMashine->buzzerOff();
 }

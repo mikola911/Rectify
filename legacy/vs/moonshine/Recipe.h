@@ -1,7 +1,7 @@
 #pragma once
 #include "IRecipe1State.h"
 #include "Init.h"
-#include "Head.h"
+#include "Heat.h"
 #include "Preheating.h"
 #include "HeadSelection.h"
 #include "TechnologicalBreak.h"
@@ -22,7 +22,7 @@ public:
 		statesCount = 6;
 		states[0] = Init(moonshineMashine);
 		states[1] = Preheating(moonshineMashine);
-		states[2] = Head(moonshineMashine);
+		states[2] = Heat(moonshineMashine);
 		states[3] = HeadSelection(moonshineMashine);
 		states[4] = TechnologicalBreak(moonshineMashine);
 		states[5] = AlcoholSelection(moonshineMashine);
@@ -33,7 +33,14 @@ private:
     IRecipe1State states[6];
     int statesCount;
     int currentState = 0;
-	String statesLines[6]={"init", "Preheating","Head", "HeadSelection", "TechnologicalBreak", "AlcoholSelection"};
+	String statesLines[6]={
+		"    Stage:  init    ", 
+		" Stage:  preheating ",
+		"   Stage: Heating   ",
+		"   Head Selection   ",
+		" TechnologicalBreak ",
+		"  AlcoholSelection  "
+	};
 	void printLog();
 };
 

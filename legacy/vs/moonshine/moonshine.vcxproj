@@ -109,7 +109,7 @@
     <ClInclude Include="AlcoholSelection.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="ErrorCodes.h" />
-    <ClInclude Include="Head.h" />
+    <ClInclude Include="Heat.h" />
     <ClInclude Include="HeadSelection.h" />
     <ClInclude Include="Init.h" />
     <ClInclude Include="IRecipe1State.h" />
@@ -123,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlcoholSelection.cpp" />
-    <ClCompile Include="Head.cpp" />
+    <ClCompile Include="Heat.cpp" />
     <ClCompile Include="HeadSelection.cpp" />
     <ClCompile Include="Init.cpp" />
     <ClCompile Include="IRecipe1State.cpp" />

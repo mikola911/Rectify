@@ -7,57 +7,46 @@ void Recipe::start() {
 		Serial.print("Current state: ");
 		Serial.println(this->statesLines[currentState]);
 
-
-		if (currentState == 0)
-		{
+		if (currentState == 0) {
 			Init init = Init(this->moonshineMashine);
-			while (!init.action())
-			{
+			while (!init.action()) {
 				//printLog();
 			}
 		}
-		else if (currentState == 1)
-		{
+		else if (currentState == 1) {
 			Preheating preheating = Preheating(this->moonshineMashine);
-			while (!preheating.action())
-			{
+			while (!preheating.action()) {
 				//printLog();
 			}
 		}
 		else if (currentState == 2) {
-			Head head = Head(this->moonshineMashine);
-			while (!head.action())
-			{
+			Heat heat = Heat(this->moonshineMashine);
+			while (!heat.action()) {
 				//printLog();
 			}
 		}
 		else if (currentState == 3) {
 			HeadSelection headSelection = HeadSelection(this->moonshineMashine);
-			while (!headSelection.action())
-			{
+			while (!headSelection.action()) {
 				//printLog();
 			}
 		}
 		else if (currentState == 4) {
 			TechnologicalBreak technologicalBreak = TechnologicalBreak(this->moonshineMashine);
-			while (!technologicalBreak.action())
-			{
+			while (!technologicalBreak.action()) {
 				//printLog();
 			}
 		}
-		else if (currentState == 5)
-		{
+		else if (currentState == 5) {
 			AlcoholSelection alcoholSelection = AlcoholSelection(this->moonshineMashine);
-			while (!alcoholSelection.action())
-			{
+			while (!alcoholSelection.action()) {
 				//printLog();
 			}
 		}
-		else{
+		else {
 			Serial.print("default: ");
 			Serial.println(currentState);
 		}
-
     }
 }
 

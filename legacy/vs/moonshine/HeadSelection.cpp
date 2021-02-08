@@ -9,6 +9,7 @@ int HeadSelection::action() {
         firstAction = false;
     }
     updateTemp();
+	moonshineMashine->t1GetTemp();
     if (moonshineMashine->isNextButtonPressed())
     {
         return 1;

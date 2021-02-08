@@ -6,7 +6,6 @@ class Init : public IRecipe1State {
 public:
 	virtual  int  action() override
 	{
-		//Serial.println("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 		int error = selfCheck();
 		if (error == 1) {
 			Serial.println("1");

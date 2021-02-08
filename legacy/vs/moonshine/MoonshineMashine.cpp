@@ -6,14 +6,11 @@
 MoonshineMashine::MoonshineMashine() {
     
     Serial.begin(115200);
-    //Serial.println(“MoonshineMashine starting”);
+    Serial.println("MoonshineMashine starting");
 
     display.setBrightness(0x0f);
-    display.showNumberDec(0000);
-
     lcd.init();
-    lcd.backlight();
-    sayHello();
+	lcd.backlight();
 
     sensor.begin();
     t1GetTemp();
@@ -31,7 +28,7 @@ void MoonshineMashine::s1Rotate(int angle) {
 float MoonshineMashine::t1GetTemp() {
 	sensor.setResolution(11); //12bit, 1/16deg - max resolution
     sensor.requestTemperatures();
-	while (!sensor.isConversionComplete()) {}; //#FIXME - delay about 750ms
+	while (!sensor.isConversionComplete()) {}; //#FIXME - delay about 750ms if 12bit resolution
     t1_temp = sensor.getTempC();
 	//Serial.print("Temp: ");
 	//Serial.println(t1_temp);
@@ -44,6 +41,8 @@ void MoonshineMashine::showTemp() {
 }
 
 void MoonshineMashine::sayHello() {
+	buzzerOn();
+	display.showNumberDec(0000);
 	d2Write(1, 0, "Wunderwaffe starts");
 }
 
@@ -58,18 +57,23 @@ void MoonshineMashine::buzzerOff()
 }
 void MoonshineMashine::buzzerOn()
 {
-	tone(buzzer, 200, 5000); // #FIXME - sounds 5seconds
+	tone(buzzer, 200, 400);
+	delay(400);
+	tone(buzzer, 600, 400);
+	delay(200);
 }
 bool MoonshineMashine::isNextButtonPressed()
 {
+	d2Write(4, 3, "Press button");
 	bool state = false;
 	if (digitalRead(btn) == 0) {
 		state = true;
-		for (int i = 0; i < 250; i++) {
+		for (int i = 0; i < 500; i++) {
 			if (digitalRead(btn)) state = false;
 		}
 	}
-	while (digitalRead(btn) == 0) {}
+	while (digitalRead(btn) == 0) { d2Write(3, 3, "Release button"); }
+	if (state) d2Write(0, 3, "                    ");
 	return state;
 }
 
