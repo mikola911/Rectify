@@ -44,8 +44,7 @@ void MoonshineMashine::showTemp() {
 }
 
 void MoonshineMashine::sayHello() {
-    lcd.setCursor(0, 0);
-    lcd.print("Arduino i2c 20x4 LCD");
+	d2Write(1, 0, "Wunderwaffe starts");
 }
 
 void MoonshineMashine::d2Write(int index, int rowNumber, String line) {
@@ -55,14 +54,22 @@ void MoonshineMashine::d2Write(int index, int rowNumber, String line) {
 
 void MoonshineMashine::buzzerOff()
 {
-	digitalWrite(buzzer, 0); // #FIXME - wrong call
+	noTone(buzzer);
 }
 void MoonshineMashine::buzzerOn()
 {
-	digitalWrite(buzzer, 1); // #FIXME - wrong call
+	tone(buzzer, 200, 5000); // #FIXME - sounds 5seconds
 }
 bool MoonshineMashine::isNextButtonPressed()
 {
-	return true;// #FIXME - read encoder btn with debounce
+	bool state = false;
+	if (digitalRead(btn) == 0) {
+		state = true;
+		for (int i = 0; i < 250; i++) {
+			if (digitalRead(btn)) state = false;
+		}
+	}
+	while (digitalRead(btn) == 0) {}
+	return state;
 }
 

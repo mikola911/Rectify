@@ -14,7 +14,7 @@
  */
 
 #include "MoonshineMashine.h"
-#include "Recipe1.h"
+#include "Recipe.h"
 void setup() {
     MoonshineMashine* moonshineMashine = new MoonshineMashine;
     Recipe* recipe = new Recipe(moonshineMashine);
