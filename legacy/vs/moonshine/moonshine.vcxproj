@@ -71,7 +71,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\moonshine;C:\Program Files (x86)\Arduino\libraries\Servo\src;$(ProjectDir)Libraries\TM1637Display\1.2.0\TM1637Display;C:\Users\Admin\Documents\Arduino\libraries\OneWire;C:\Users\Admin\Documents\Arduino\libraries\DS18B20_RT;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\Wire\src;C:\Users\Admin\Documents\Arduino\libraries\LiquidCrystal_I2C;C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;$(ProjectDir)..\..\..\..\..\FORMYS~1\Rectify\legacy\vs\MOONSH~1;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include-fixed;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\avr;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\moonshine;C:\Program Files (x86)\Arduino\libraries\Servo\src;C:\Users\Admin\Documents\Arduino\libraries\TM1637;C:\Users\Admin\Documents\Arduino\libraries\OneWire;C:\Users\Admin\Documents\Arduino\libraries\DS18B20_RT;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\Wire\src;C:\Users\Admin\Documents\Arduino\libraries\LiquidCrystal_I2C;C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;$(ProjectDir)..\..\..\..\..\FORMYS~1\Rectify\legacy\vs\MOONSH~1;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include-fixed;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\avr;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.moonshine.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_atmega2560__;__AVR_ATmega2560__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=108010;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -116,7 +116,6 @@
     <ClInclude Include="MoonshineMashine.h" />
     <ClInclude Include="Preheating.h" />
     <ClInclude Include="Recipe.h" />
-    <ClInclude Include="Recipe1.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TailCollection.h" />
     <ClInclude Include="TechnologicalBreak.h" />
@@ -131,7 +130,6 @@
     <ClCompile Include="MoonshineMashine.cpp" />
     <ClCompile Include="Preheating.cpp" />
     <ClCompile Include="Recipe.cpp" />
-    <ClCompile Include="Recipe1.cpp" />
     <ClCompile Include="TailCollection.cpp" />
     <ClCompile Include="TechnologicalBreak.cpp" />
   </ItemGroup>

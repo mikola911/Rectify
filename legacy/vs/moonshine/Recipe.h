@@ -1,30 +1,39 @@
 #pragma once
-#include "MoonshineMashine.h"
+#include "IRecipe1State.h"
+#include "Init.h"
+#include "Head.h"
+#include "Preheating.h"
+#include "HeadSelection.h"
+#include "TechnologicalBreak.h"
+#include "TailCollection.h"
+#include "AlcoholSelection.h"
+class Recipe {
 
-class Recipe
-{
 public:
 
-    Recipe(MoonshineMashine* moonshineMashine)
-    {
-        this->moonshineMashine = moonshineMashine;
-    }
+    void pause();
+    void stop();
+    void start();
 
-    /**
-     * Начать процесс перегонки.
-     */
-    virtual void start();
-    /**
-     * Остановить процесс перегонки
-     */
-    virtual void stop();
-    /**
-     * Пауза.
-     */
-    virtual void pause();
+	Recipe(MoonshineMashine* moonshineMashine)
+	{
+		this->moonshineMashine = moonshineMashine;
+		Init *init = new Init(moonshineMashine);
+		statesCount = 6;
+		states[0] = Init(moonshineMashine);
+		states[1] = Preheating(moonshineMashine);
+		states[2] = Head(moonshineMashine);
+		states[3] = HeadSelection(moonshineMashine);
+		states[4] = TechnologicalBreak(moonshineMashine);
+		states[5] = AlcoholSelection(moonshineMashine);
+	}
 
 private:
-
-    MoonshineMashine* moonshineMashine;
+	MoonshineMashine* moonshineMashine;
+    IRecipe1State states[6];
+    int statesCount;
+    int currentState = 0;
+	String statesLines[6]={"init", "Preheating","Head", "HeadSelection", "TechnologicalBreak", "AlcoholSelection"};
+	void printLog();
 };
 

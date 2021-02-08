@@ -19,13 +19,10 @@
     <Filter Include="Source Files\production\moonshinemashine">
       <UniqueIdentifier>{7b958e52-fc46-481a-848e-ddcd0f121e79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\production\technologist">
-      <UniqueIdentifier>{a5ae0f47-e190-482d-a273-5d31366c19e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\production\technologist\recipe1">
+    <Filter Include="Source Files\production\recipe">
       <UniqueIdentifier>{4c05474e-ad3a-434a-b749-f87401371516}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\production\technologist\recipe1\states">
+    <Filter Include="Source Files\production\recipe\states">
       <UniqueIdentifier>{cfab35e6-4eee-4b9c-af29-0d9e1164b06f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -39,20 +36,14 @@
     <ClInclude Include="MoonshineMashine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Recipe.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Constants.h">
-      <Filter>Source Files\production\technologist\recipe1</Filter>
+      <Filter>Source Files\production\recipe</Filter>
     </ClInclude>
     <ClInclude Include="ErrorCodes.h">
-      <Filter>Source Files\production\technologist\recipe1</Filter>
-    </ClInclude>
-    <ClInclude Include="Recipe1.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\production\recipe</Filter>
     </ClInclude>
     <ClInclude Include="IRecipe1State.h">
       <Filter>Header Files</Filter>
@@ -78,40 +69,40 @@
     <ClInclude Include="TailCollection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Recipe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MoonshineMashine.cpp">
       <Filter>Source Files\production\moonshinemashine</Filter>
     </ClCompile>
-    <ClCompile Include="Recipe.cpp">
-      <Filter>Source Files\production\technologist</Filter>
-    </ClCompile>
-    <ClCompile Include="Recipe1.cpp">
-      <Filter>Source Files\production\technologist\recipe1</Filter>
-    </ClCompile>
     <ClCompile Include="IRecipe1State.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
     <ClCompile Include="Init.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
     <ClCompile Include="Preheating.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
     <ClCompile Include="Head.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
     <ClCompile Include="HeadSelection.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
     <ClCompile Include="TechnologicalBreak.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
     <ClCompile Include="AlcoholSelection.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
     </ClCompile>
     <ClCompile Include="TailCollection.cpp">
-      <Filter>Source Files\production\technologist\recipe1\states</Filter>
+      <Filter>Source Files\production\recipe\states</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipe.cpp">
+      <Filter>Source Files\production\recipe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

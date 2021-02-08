@@ -13,24 +13,24 @@
   */
 #define preheatingTempJump 55
   /**
-   * скачек температуры который мы воспринимаем как сигнал перехода к следующему состоянию.
+   * скачoк температуры который мы воспринимаем как сигнал перехода к следующему состоянию.
    */
 #define preheatingDeltaTempJump 20
 
   /**
    * Температура при которой мы считаем, что вошли в ошибку.
    */
-#define preheatingTempErrorMax 220
+#define preheatingTempErrorMax 100
    /**
 	* Температура при которой мы считаем, что вошли в ошибку.
 	*/
-#define preheatingTempErrorMin -20
+#define preheatingTempErrorMin 0
 
 
 	 /**
 	  * Интервал времени закоторый должен происходить скачек температуры.
 	  */
-#define preheatingDeltaTimeForDeltaTemp 10000
+#define preheatingDeltaTimeForDeltaTemp 1000
 
 	  //Нагрев
 	  /**
@@ -40,9 +40,8 @@
 
 	   /**
 		* Скачек температуры допустимый при выходи в стабильный режим данного этапа.
-		* !!!ВНИМАНИЕ ПОКА СТАВЛЮ В INT!!!!
 		*/
-#define heatDeltaTemp 1
+#define heatDeltaTemp 0.5
 
 		/**
 		 * Время в течении которого температура жидкости должна оставаться постоянной.
@@ -51,18 +50,18 @@
 		 /**
 		  * Температура при которой мы считаем, что вошли в ошибку.
 		  */
-#define heatTempErrorMax 220
+#define heatTempErrorMax 100
 		  /**
 		   * Температура при которой мы считаем, что вошли в ошибку.
 		   */
-#define heatTempErrorMin -20
+#define heatTempErrorMin 0
 
 		   //Отбор голов
 
 		   /**
 			* Угол поворота сервомашины при отборе голов.
 			*/
-#define headSelectionServoAngle 10
+#define headSelectionServoAngle 170
 
 
 			//Технологическая пауза
@@ -74,7 +73,7 @@
 			 /**
 			  * Угол поворота сервомотора во время технологической паузы.
 			  */
-#define technologicalBreakServoPosition 15
+#define technologicalBreakServoPosition 180
 
 
 			  //Отбор спирта
@@ -82,16 +81,16 @@
 			  /**
 			   * Уголо поворота сервопривода при котором отбор спирта прекращен
 			   */
-#define nodeSelectionCloseAngle 0
+#define nodeSelectionCloseAngle 180
 
 			   /**
 				* Уголо поворота сервопривода при котором отбор спирта идет.
 				*/
-#define nodeSelectionOpenAngle 230
+#define nodeSelectionOpenAngle 150
 				/**
 				 * Дельа температуры на которую можно превышать при отборе голов.
 				 */
-#define nodeSelectionDeltaTemp 0.5
+#define nodeSelectionDeltaTemp 0.2
 				 /**
 				 * Максимальное время которое прошло закрытия клапана в течении которого температура не падает.
 				 */

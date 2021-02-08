@@ -7,7 +7,6 @@ public:
     int  action() override;
     AlcoholSelection(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {
 		nodeSelectionTemp = moonshineMashine->t1GetTemp();
-		moonshineMashine->d2Write(0, 3, String(nodeSelectionTemp));
 	};
 
 private:
