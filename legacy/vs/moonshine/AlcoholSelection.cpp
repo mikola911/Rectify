@@ -16,7 +16,7 @@ int AlcoholSelection::action()
     }
 
 
-    if (moonshineMashine->t1GetTemp() > nodeSelectionTemp + nodeSelectionDeltaTemp)
+    if (moonshineMashine->t1_temp > nodeSelectionTemp + nodeSelectionDeltaTemp)
     {
 		Serial.println("closeNodeSelection");
         closeNodeSelection();

@@ -3,7 +3,6 @@
 #include "ErrorCodes.h"
 int TechnologicalBreak::action() {
     updateTemp();
-	moonshineMashine->t1GetTemp();
     if (firstAction)
     {
 		Serial.print("technologicalBreakTimeout: ");

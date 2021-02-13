@@ -7,6 +7,7 @@ MoonshineMashine::MoonshineMashine() {
     
     Serial.begin(115200);
     Serial.println("MoonshineMashine starting");
+	sayHello();
 
     display.setBrightness(0x0f);
     lcd.init();
@@ -43,7 +44,7 @@ void MoonshineMashine::showTemp() {
 void MoonshineMashine::sayHello() {
 	buzzerOn();
 	display.showNumberDec(0000);
-	d2Write(1, 0, "Wunderwaffe starts");
+	d2Write(0, 0, "Wunderwaffe starts");
 }
 
 void MoonshineMashine::d2Write(int index, int rowNumber, String line) {
@@ -51,19 +52,16 @@ void MoonshineMashine::d2Write(int index, int rowNumber, String line) {
     lcd.print(line);
 }
 
-void MoonshineMashine::buzzerOff()
-{
+void MoonshineMashine::buzzerOff() {
 	noTone(buzzer);
 }
-void MoonshineMashine::buzzerOn()
-{
+void MoonshineMashine::buzzerOn() {
 	tone(buzzer, 200, 400);
 	delay(400);
 	tone(buzzer, 600, 400);
 	delay(200);
 }
-bool MoonshineMashine::isNextButtonPressed()
-{
+bool MoonshineMashine::isNextButtonPressed() {
 	d2Write(4, 3, "Press button");
 	bool state = false;
 	if (digitalRead(btn) == 0) {
@@ -77,3 +75,22 @@ bool MoonshineMashine::isNextButtonPressed()
 	return state;
 }
 
+void MoonshineMashine::showTime() {
+	unsigned long current = millis();
+	byte Millis = current % 100;
+	byte Seconds = current / 1000 % 60;
+	byte Minutes = current / 1000 / 60 % 60;
+	byte Hours = current / 1000 / 60 / 60;
+	String Time;
+	if (Hours > 9) Time = String(Hours) + ':';
+	else Time = '0' + String(Hours) + ':';
+	if (Minutes > 9) Time += String(Minutes) + ':';
+	else Time += '0' + String(Minutes) + ':';
+	if (Seconds > 9) Time += String(Seconds) + '.';
+	else Time += '0' + String(Seconds) + '.';
+	if (Millis > 9) Time += String(Millis);
+	else Time += '0' + String(Millis);
+
+	lcd.setCursor(9, 0);
+	lcd.print(Time);
+}

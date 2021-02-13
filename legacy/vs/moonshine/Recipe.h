@@ -33,14 +33,14 @@ private:
     IRecipe1State states[6];
     int statesCount;
     int currentState = 0;
-	String statesLines[6]={
+	String statesLines[7]={
 		"    Stage:  init    ", 
 		" Stage:  preheating ",
 		"   Stage: Heating   ",
 		"   Head Selection   ",
 		" TechnologicalBreak ",
-		"  AlcoholSelection  "
+		"  AlcoholSelection  ",
+		"77777777777777777777",
 	};
-	void printLog();
 };
 

@@ -78,11 +78,16 @@
 		 */
 		void sayHello();
 
-    private:
-        /**
-         * последнее сохраненное значение
+		/**
+		 * Вывести на основной дисплей время с начала запуска программы
+		 */
+		void showTime();
+		/**
+         * последнее сохраненное значение temp
          */
         float t1_temp;
+    private:
+        
 
         OneWire oneWire = OneWire(ONE_WIRE_BUS);
 
