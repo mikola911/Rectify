@@ -1,6 +1,3 @@
-#pragma once
-#include "IRecipe1State.h"
-#include "Constants.h"
 class Init : public IRecipe1State {
 
 public:
@@ -17,6 +14,9 @@ private:
      * Выполняет проверку всего оборудования.
      * @return 1 успешно <1 код ошибки
      */
-    int selfCheck();
+	int selfCheck() {
+		if (moonshineMashine->isNextButtonPressed())  return 1;
+		return 0;
+	};
 };
 

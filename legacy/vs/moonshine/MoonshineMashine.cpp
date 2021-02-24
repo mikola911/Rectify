@@ -1,10 +1,6 @@
 #include "MoonshineMashine.h"
 
-
-
-
 MoonshineMashine::MoonshineMashine() {
-    
     Serial.begin(115200);
     Serial.println("MoonshineMashine starting");
 	sayHello();

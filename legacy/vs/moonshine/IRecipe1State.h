@@ -1,16 +1,11 @@
-#pragma once
-#include "MoonshineMashine.h"
+#include "Constants.h"
+#include "ErrorCodes.h"
+
 class IRecipe1State
 {
-
-
-
 public:
-	IRecipe1State()
-	{
-	}
-    IRecipe1State(MoonshineMashine* moonshineMashine)
-    {
+	IRecipe1State() {}
+    IRecipe1State(MoonshineMashine* moonshineMashine) {
         this->moonshineMashine = moonshineMashine;
     }
 	/**
@@ -18,16 +13,10 @@ public:
 	 * вызывается в цикле.
 	 * Кода ошибок
 	 * (см ErrorCodes.h)
-	 * @return 1 находимсся все еще в текущем состоянии 0 выходим из состояния <0 ошибка
 	 */
 	virtual  int action() { return 0; };
 
-
-
-
 protected:
-
-
 
     MoonshineMashine* moonshineMashine;
 
@@ -39,17 +28,26 @@ protected:
     /**
      * Ждем действия оператора.
      */
-    void waitOperatorAction();
+	void waitOperatorAction() {
+	    while (!moonshineMashine->isNextButtonPressed())
+		{
+			moonshineMashine->buzzerOn();
+			moonshineMashine->t1GetTemp(); // температуру мы замеряем снаружи, избавимся от while - не будем делать доп замер
+		}
+		moonshineMashine->buzzerOff();
+	};
 
     /**
      * Обновляет температуру для определения резкого скачка температуры.
      */
-    void updateTemp();
-
-
+	void updateTemp() {
+	    if (millis() - lastTempCheckTime > preheatingDeltaTimeForDeltaTemp) {
+			lastTempCheckTime = millis();
+			previousTemp = moonshineMashine->t1GetTemp();
+		}
+	};
 
 private:
-
 
     /**
      * Системное время последнего замера температуры.

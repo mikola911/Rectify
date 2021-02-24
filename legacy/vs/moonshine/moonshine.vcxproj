@@ -122,16 +122,7 @@
     <ClInclude Include="__vm\.moonshine.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlcoholSelection.cpp" />
-    <ClCompile Include="Heat.cpp" />
-    <ClCompile Include="HeadSelection.cpp" />
-    <ClCompile Include="Init.cpp" />
-    <ClCompile Include="IRecipe1State.cpp" />
     <ClCompile Include="MoonshineMashine.cpp" />
-    <ClCompile Include="Preheating.cpp" />
-    <ClCompile Include="Recipe.cpp" />
-    <ClCompile Include="TailCollection.cpp" />
-    <ClCompile Include="TechnologicalBreak.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="moonshine.rc" />

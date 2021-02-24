@@ -1,10 +1,16 @@
-#pragma once
-#include "IRecipe1State.h"
 class HeadSelection : public IRecipe1State {
 
 public:
     HeadSelection(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
-    int  action() override;
+    int  action() override {
+		if (firstAction) {
+			moonshineMashine->s1Rotate(headSelectionServoAngle);
+			firstAction = false;
+		}
+		updateTemp();
+		if (moonshineMashine->isNextButtonPressed())  return 1;
+		return 0;
+	};
 
 private:
     /**

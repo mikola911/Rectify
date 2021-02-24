@@ -1,7 +1,4 @@
 #pragma once
-//
-// Created by oem on 02.01.2021.
-//
 //#include <Arduino.h>
 
 #include <Servo.h>
@@ -37,12 +34,6 @@
          * @param angle угол в градусах
          */
         void s1Rotate(int angle);
-
-        /**
-         * Изменит угол сервопривода на deltaAngle
-         * @param angle угол в градусах
-         */
-        void s1RotateOnDelta(int deltaAngle);
 
         /**
          * Получить температуру с термоменсора 1.
@@ -87,7 +78,6 @@
          */
         float t1_temp;
     private:
-        
 
         OneWire oneWire = OneWire(ONE_WIRE_BUS);
 
