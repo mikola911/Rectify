@@ -1,6 +1,7 @@
 class TechnologicalBreak : public IRecipe1State {
 
 public:
+	TechnologicalBreak() : IRecipe1State() {};
     TechnologicalBreak(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
     int action() override {
 		if (firstAction) {

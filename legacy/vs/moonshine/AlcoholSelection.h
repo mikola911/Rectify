@@ -1,6 +1,7 @@
 class AlcoholSelection : public IRecipe1State {
 
 public:
+	AlcoholSelection() : IRecipe1State() {};
     AlcoholSelection(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {
 		nodeSelectionTemp = moonshineMashine->t1GetTemp();
 	};

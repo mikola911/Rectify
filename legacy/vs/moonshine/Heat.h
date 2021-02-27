@@ -1,6 +1,7 @@
 class Heat : public IRecipe1State {
 
 public:
+	Heat() : IRecipe1State() {};
     Heat(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
 
 	int  action() override{

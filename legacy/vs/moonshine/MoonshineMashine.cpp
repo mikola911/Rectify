@@ -18,7 +18,7 @@ void MoonshineMashine::s1Rotate(int angle) {
     servoValve.write(angle);
 	Serial.print("s1Rotate: ");
 	Serial.println(angle);
-    delay(1000);
+    delay(200);
     servoValve.detach();
 }
 

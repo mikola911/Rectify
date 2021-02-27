@@ -1,6 +1,7 @@
 class HeadSelection : public IRecipe1State {
 
 public:
+	HeadSelection() : IRecipe1State() {};
     HeadSelection(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
     int  action() override {
 		if (firstAction) {

@@ -1,22 +1,36 @@
 class Init : public IRecipe1State {
 
 public:
-	virtual  int  action() override {
-		int error = selfCheck();
-		if (error == 1) {
-			moonshineMashine->s1Rotate(startServoAngle);
-		}
-		return error;
-	}
+	Init() : IRecipe1State() {};
     Init(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
+
+	int action() override {
+		selfCheck();
+
+		if (checkStatus > 0) {
+			if (moonshineMashine->isNextButtonPressed()) {
+				moonshineMashine->s1Rotate(startServoAngle);
+				return 1;
+			}
+			return 0;
+		}
+		return checkStatus;
+	}
 private:
-    /**
-     * Выполняет проверку всего оборудования.
-     * @return 1 успешно <1 код ошибки
-     */
-	int selfCheck() {
-		if (moonshineMashine->isNextButtonPressed())  return 1;
-		return 0;
+	/*
+	 * состояние машины. 
+	 * 0 - все ок, но ждем оператора. 
+	 * 1 - все ок, уходим в другой этап
+	 * все что меньше нуля - ошибки (пока не сделаны)
+	 * пока не проверили - считаем что в ошибке
+	 */
+	int checkStatus = -1;
+
+	void selfCheck() {
+		if (checkStatus < 1) {
+			// #TODO
+			checkStatus = 1;
+		}
 	};
 };
 
