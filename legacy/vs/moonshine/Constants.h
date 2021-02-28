@@ -1,97 +1,54 @@
-#pragma once
-//Инициализация
+// Servo valve constants
 
-/**
- * Начальный угол сервопривода.
- */
-#define startServoAngle  180
+/* Valve is closed */
+#define CLOSED_SERVO_ANGLE  180
 
- //Преднагрев
+/* Угол поворота сервомашины при отборе голов */
+#define HEAD_SELECTION_SERVO_ANGLE 170
 
- /**
-  * Температура при которой мы считаем, что преднагрев закончен
-  */
-#define preheatingTempJump 55
-  /**
-   * скачoк температуры который мы воспринимаем как сигнал перехода к следующему состоянию.
-   */
-#define preheatingDeltaTempJump 20
+/* Угол поворота сервомашины при отборе спирта */
+#define ALCOHOL_SELECTION_SERVO_ANGLE 160
 
-  /**
-   * Температура при которой мы считаем, что вошли в ошибку.
-   */
-#define preheatingTempErrorMax 100
-   /**
-	* Температура при которой мы считаем, что вошли в ошибку.
-	*/
-#define preheatingTempErrorMin 0
+/* Угол поворота сервомашины при отборе хвостов */
+#define TAIL_SELECTION_SERVO_ANGLE 120 // #TODO
 
+// Temperature constants 
 
-	 /**
-	  * Интервал времени закоторый должен происходить скачок температуры.
-	  */
-#define preheatingDeltaTimeForDeltaTemp 1000
+/* system is too hot, end of preheat, need to switch on cooling */
+#define PREHEAT_END_TEMP 45.0
+/* heating too fast, end of preheat, need to switch on cooling */
+#define PREHEAT_DELTA_TEMP 10.0
 
-	  //Нагрев
-	  /**
-	   * Температура при которой процесс нагрева можно считать оконченным.
-	   */
-#define heatMaxTem 70
+/* temperature seems enough for next step */
+#define HEAT_MIN_TEMP 65.0
 
-	   /**
-		* Скачек температуры допустимый при выходи в стабильный режим данного этапа.
-		*/
-#define heatDeltaTemp 0.5
+/* temperature seems too hot for heating */
+#define HEAT_MAX_TEMP 85.0 // #TODO
 
-		/**
-		 * Время в течении которого температура жидкости должна оставаться постоянной.
-		 */
-#define heatConstTempTime 60L*1000L*300L
-		 /**
-		  * Температура при которой мы считаем, что вошли в ошибку.
-		  */
-#define heatTempErrorMax 100
-		  /**
-		   * Температура при которой мы считаем, что вошли в ошибку.
-		   */
-#define heatTempErrorMin 0
+/* allowed delta temperature for heating */
+#define HEAT_DELTA_TEMP 0.5
 
-		   //Отбор голов
+/* Дельа температуры на которую можно превышать при отборе голов */
+#define ALCOHOL_SELECTION_DELTA_TEMP 0.2
 
-		   /**
-			* Угол поворота сервомашины при отборе голов.
-			*/
-#define headSelectionServoAngle 170
+/* maximum of temperature in normal conditions */
+#define TEMP_MAX 102.0
 
+/* minimum of temperature in normal conditions */
+#define TEMP_MIN 16.0
 
-			//Технологическая пауза
+// Time constants
 
-			/**
-			 * Технологическя пауза [мс.]
-			 */
-#define technologicalBreakTimeout 60L*1000L*1L// #TODO
-			 /**
-			  * Угол поворота сервомотора во время технологической паузы.
-			  */
-#define technologicalBreakServoPosition 180
+/* Time interval for catching temp jump */
+#define UPDATE_DELTA_TIME 1000
 
+/* Время в течении которого температура жидкости должна оставаться постоянной.*/
+#define HEAT_BREAK_TIME 60L*1000L*30L
 
-			  //Отбор спирта
+/* tech break time - need for stable process */
+#define TECHNOLOGICAL_BREAK_TIME 60L*1000L*30L
 
-			  /**
-			   * Уголо поворота сервопривода при котором отбор спирта прекращен
-			   */
-#define nodeSelectionCloseAngle 180
+/* Максимальное время которое прошло закрытия клапана в течении которого температура не падает */
+#define ALCOHOL_SELECTION_OVERHEAT_TIME 1000L*20L
 
-			   /**
-				* Уголо поворота сервопривода при котором отбор спирта идет.
-				*/
-#define nodeSelectionOpenAngle 150
-				/**
-				 * Дельа температуры на которую можно превышать при отборе голов.
-				 */
-#define nodeSelectionDeltaTemp 0.2
-				 /**
-				 * Максимальное время которое прошло закрытия клапана в течении которого температура не падает.
-				 */
-#define ladgeTempAfterClosingTimeMax 1000*20
+// Other constants

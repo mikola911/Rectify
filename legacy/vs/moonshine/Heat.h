@@ -6,54 +6,26 @@ public:
 
 	int  action() override{
 		updateTemp();
-		updateConstantTempTimeAction();
-		int errorCode = checkError();
-		if (errorCode < 0)
-		{
-			Serial.print("Error: ");
-			Serial.println(errorCode);
-			return errorCode;
-		}
-		if (moonshineMashine->t1_temp > heatMaxTem || millis() - constantTempTime > heatConstTempTime)
-		{
+
+		if ((moonshineMashine->t1_temp > HEAT_MIN_TEMP) && (getConstantTempTime() > HEAT_BREAK_TIME)) {
 			Serial.print("Normal exit. Temp: ");
 			Serial.println(moonshineMashine->t1_temp);
-			waitOperatorAction();
+			waitOperatorAction(); // #FIXME
 			return 1;
 		}
 		return 0;
 	};
 private:
-    /**
-     * Время в течении которого температура не растет.
-     */
-    int constantTempTime = 0;
+	/* системное время, когда менялась температура */
+	unsigned long tempChangeTime = 0;
 
-
-    /**
-     * Проверяет находится ли текущая машина в ошибке.
-     * @return 0 - нет ошибок <0 код ошибки
-     */
-    int checkError() {
-		if (moonshineMashine->t1_temp > heatTempErrorMax)
-		{
-			return TEMP_LARGE_ERROR;
+    /* Получаем время, в течение которого температура не растет */
+	unsigned long getConstantTempTime() {  
+		unsigned long ms = millis();
+		if (abs(previousTemp - moonshineMashine->t1_temp) > HEAT_DELTA_TEMP) {
+			tempChangeTime = ms;
 		}
-		else if (moonshineMashine->t1_temp < heatTempErrorMin)
-		{
-			return TEMP_SMALL_ERROR;
-		}
-		return 1;
-	};
-
-    /**
-     * Процесс обновления времени в течении которого температура не растет.
-     */
-    void updateConstantTempTimeAction() {
-		// #FIXME
-		if (previousTemp > moonshineMashine->t1_temp + heatDeltaTemp) {
-			constantTempTime = millis();
-		}
+		return (ms - tempChangeTime);
 	};
 };
 

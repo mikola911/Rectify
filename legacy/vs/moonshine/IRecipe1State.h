@@ -28,9 +28,8 @@ protected:
     /**
      * Ждем действия оператора.
      */
-	void waitOperatorAction() {
-	    while (!moonshineMashine->isNextButtonPressed())
-		{
+	void waitOperatorAction() { // #FIXME - remove while
+	    while (!moonshineMashine->isNextButtonPressed()) {
 			moonshineMashine->buzzerOn();
 			moonshineMashine->t1GetTemp(); // температуру мы замеряем снаружи, избавимся от while - не будем делать доп замер
 		}
@@ -41,9 +40,9 @@ protected:
      * Обновляет температуру для определения резкого скачка температуры.
      */
 	void updateTemp() {
-	    if (millis() - lastTempCheckTime > preheatingDeltaTimeForDeltaTemp) {
+	    if (millis() - lastTempCheckTime > UPDATE_DELTA_TIME) {
 			lastTempCheckTime = millis();
-			previousTemp = moonshineMashine->t1GetTemp();
+			previousTemp = moonshineMashine->t1_temp;
 		}
 	};
 

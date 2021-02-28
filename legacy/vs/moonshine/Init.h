@@ -9,7 +9,7 @@ public:
 
 		if (checkStatus > 0) {
 			if (moonshineMashine->isNextButtonPressed()) {
-				moonshineMashine->s1Rotate(startServoAngle);
+				moonshineMashine->s1Rotate(CLOSED_SERVO_ANGLE);
 				return 1;
 			}
 			return 0;

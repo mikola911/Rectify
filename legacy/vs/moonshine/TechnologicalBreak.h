@@ -3,17 +3,19 @@ class TechnologicalBreak : public IRecipe1State {
 public:
 	TechnologicalBreak() : IRecipe1State() {};
     TechnologicalBreak(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
-    int action() override {
+    
+	int action() override {
+		unsigned long ms = millis();
 		if (firstAction) {
 			firstAction = false;
-			moonshineMashine->s1Rotate(technologicalBreakServoPosition);
+			startMs = ms;
+			moonshineMashine->s1Rotate(CLOSED_SERVO_ANGLE);
 		}
-		unsigned long delta = millis() - startMiles;
-		return delta > technologicalBreakTimeout;
+		return ms - startMs > TECHNOLOGICAL_BREAK_TIME;
 	};
 
 private:
     bool firstAction = true;
-    unsigned long startMiles = millis();
+	unsigned long startMs = 0;
 };
 

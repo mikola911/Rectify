@@ -48,6 +48,8 @@ public:
 			Serial.println("Program ends, restarting...");
 			currentState = 0;
 		}
+		// #TODO - check common errors
+
 		// Serial.print("After: currentState = ");
 		// Serial.println(currentState);
 	};
