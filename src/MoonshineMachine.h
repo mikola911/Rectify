@@ -6,7 +6,7 @@
 #include <TM1637Display.h>
 #include <OneWire.h>
 #include <DS18B20.h>
-#include <Wire.h> 
+#include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #define buzzer 24
 #define ONE_WIRE_BUS 25
@@ -24,79 +24,76 @@
  * e - ��������
  * d - �������
  */
-    class  MoonshineMachine {
+class MoonshineMachine
+{
 
-    public:
-        MoonshineMachine();
+public:
+    MoonshineMachine();
 
-        /**
+    /**
          * ��������� ����������� � �������� ����.
          * @param angle ���� � ��������
          */
-        void s1Rotate(int angle);
+    void s1Rotate(int angle);
 
-        /**
+    /**
          * �������� ����������� � ������������ 1.
          * @return  ����������� � ������������ 1 � ��������.
          */
-        float t1GetTemp();
+    float t1GetTemp();
 
-        /**
+    /**
          * ������� �� ������� ����������
          * @param index ��������� � ������ (0-19)
          * @param rowNumber ����� ������ (0-3)
          * @param line ������
         */
-        void d2Write(int index, int rowNumber, String line);
+    void d2Write(int index, int rowNumber, String line);
 
-        /**
+    /**
          *
          * @return ������ �� ������ �������� � ���������� ���������������� ���������.
          */
-        bool isNextButtonPressed();
+    bool isNextButtonPressed();
 
-        /**
+    /**
          * �������� �����.
          */
-        void buzzerOn();
-        /**
+    void buzzerOn();
+    /**
          * ��������� �����.
          */
-        void buzzerOff();
+    void buzzerOff();
 
-		/**
+    /**
 		 * ������� �� �������� ������� �������������� ���������
 		 */
-		void sayHello();
+    void sayHello();
 
-		/**
+    /**
 		 * ������� �� �������� ������� ����� � ������ ������� ���������
 		 */
-		void showTime();
-		/**
+    void showTime();
+    /**
          * ��������� ����������� �������� temp
          */
-        float t1_temp;
-    private:
+    float t1_temp;
 
-        OneWire oneWire = OneWire(ONE_WIRE_BUS);
+private:
+    OneWire oneWire = OneWire(ONE_WIRE_BUS);
 
-        DS18B20 sensor = DS18B20(&oneWire);
+    DS18B20 sensor = DS18B20(&oneWire);
 
-        Servo servoValve;
+    Servo servoValve;
 
-        // Encoder enc(encCLK, encDT, btn);
+    // Encoder enc(encCLK, encDT, btn);
 
-        TM1637Display display = TM1637Display(ledCLK, ledDIO);
+    TM1637Display display = TM1637Display(ledCLK, ledDIO);
 
-        LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4);
+    LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4);
 
-        /**
+    /**
          * ������� �� ��������� ������� ����������� � ������������ 1
          */
-        void showTemp();
+    void showTemp();
 };
-
-
-
-

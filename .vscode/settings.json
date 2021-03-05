@@ -5,6 +5,7 @@
         "headselection.h": "c",
         "errorcodes.h": "c",
         "onewire.h": "c",
-        "tm1637display.h": "c"
+        "tm1637display.h": "c",
+        "liquidcrystal_i2c.h": "c"
     }
 }
