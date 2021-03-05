@@ -2,23 +2,23 @@ class AlcoholSelection : public IRecipe1State {
 
 public:
 	AlcoholSelection() : IRecipe1State() {};
-    AlcoholSelection(MoonshineMachine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
+    AlcoholSelection(MoonshineMachine* moonshineMachine) : IRecipe1State(moonshineMachine) {};
 
 	int  action() override {
 		if (firstAction) {
 			firstAction = false;
-			nodeSelectionTemp = moonshineMashine->t1_temp;
+			nodeSelectionTemp = moonshineMachine->t1_temp;
 		}
 
 		if (overheatTime > ALCOHOL_SELECTION_OVERHEAT_TIME) {
 			//Serial.println("ladgeTempAfterClosingTimeMax ON");
-			moonshineMashine->buzzerOn();
+			moonshineMachine->buzzerOn();
 		} else {
 			//Serial.println("ladgeTempAfterClosingTimeMax OFF");
-			moonshineMashine->buzzerOff();
+			moonshineMachine->buzzerOff();
 		}
 
-		if (moonshineMashine->t1_temp > nodeSelectionTemp + ALCOHOL_SELECTION_DELTA_TEMP) {
+		if (moonshineMachine->t1_temp > nodeSelectionTemp + ALCOHOL_SELECTION_DELTA_TEMP) {
 			Serial.println("closeValve");
 			closeValve();
 		} else {
@@ -33,10 +33,10 @@ private:
 	bool firstAction = true;
 
     void openValve() {
-		moonshineMashine->s1Rotate(ALCOHOL_SELECTION_SERVO_ANGLE);
+		moonshineMachine->s1Rotate(ALCOHOL_SELECTION_SERVO_ANGLE);
 	};
     void closeValve() {
-		moonshineMashine->s1Rotate(CLOSED_SERVO_ANGLE);
+		moonshineMachine->s1Rotate(CLOSED_SERVO_ANGLE);
 	};
 
     /*  ����������� ������� ������ ������������� ��� ������ ������ */

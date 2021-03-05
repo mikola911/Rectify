@@ -5,8 +5,8 @@ class IRecipe1State
 {
 public:
 	IRecipe1State() {}
-    IRecipe1State(MoonshineMachine* moonshineMashine) {
-        this->moonshineMashine = moonshineMashine;
+    IRecipe1State(MoonshineMachine* moonshineMachine) {
+        this->moonshineMachine = moonshineMachine;
     }
 	/**
 	 * ������� ������������ ��������� � ������ ������� dt
@@ -18,7 +18,7 @@ public:
 
 protected:
 
-    MoonshineMachine* moonshineMashine;
+    MoonshineMachine* moonshineMachine;
 
     /**
      * �����������, ������� ���� �� ����� ����������� ��������� �����������.
@@ -29,11 +29,11 @@ protected:
      * ���� �������� ���������.
      */
 	void waitOperatorAction() { // #FIXME - remove while
-	    while (!moonshineMashine->isNextButtonPressed()) {
-			moonshineMashine->buzzerOn();
-			moonshineMashine->t1GetTemp(); // ����������� �� �������� �������, ��������� �� while - �� ����� ������ ��� �����
+	    while (!moonshineMachine->isNextButtonPressed()) {
+			moonshineMachine->buzzerOn();
+			moonshineMachine->t1GetTemp(); // ����������� �� �������� �������, ��������� �� while - �� ����� ������ ��� �����
 		}
-		moonshineMashine->buzzerOff();
+		moonshineMachine->buzzerOff();
 	};
 
     /**
@@ -42,7 +42,7 @@ protected:
 	void updateTemp() {
 	    if (millis() - lastTempCheckTime > UPDATE_DELTA_TIME) {
 			lastTempCheckTime = millis();
-			previousTemp = moonshineMashine->t1_temp;
+			previousTemp = moonshineMachine->t1_temp;
 		}
 	};
 

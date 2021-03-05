@@ -10,15 +10,15 @@
 
 class Recipe {
 public:
-	Recipe(MoonshineMachine* moonshineMashine) {
-		this->moonshineMashine = moonshineMashine;
+	Recipe(MoonshineMachine* moonshineMachine) {
+		this->moonshineMachine = moonshineMachine;
 
-		init = Init(this->moonshineMashine);
-		preheating = Preheating(this->moonshineMashine);
-		heat = Heat(this->moonshineMashine);
-		headSelection = HeadSelection(this->moonshineMashine);
-		technologicalBreak = TechnologicalBreak(this->moonshineMashine);
-		alcoholSelection = AlcoholSelection(this->moonshineMashine);
+		init = Init(this->moonshineMachine);
+		preheating = Preheating(this->moonshineMachine);
+		heat = Heat(this->moonshineMachine);
+		headSelection = HeadSelection(this->moonshineMachine);
+		technologicalBreak = TechnologicalBreak(this->moonshineMachine);
+		alcoholSelection = AlcoholSelection(this->moonshineMachine);
 	}
 
 	void pause() {};
@@ -27,7 +27,7 @@ public:
 
 	void iteration() {
 		// Serial.println(millis());
-		this->moonshineMashine->d2Write(0, 1, this->statesLines[currentState]);
+		this->moonshineMachine->d2Write(0, 1, this->statesLines[currentState]);
 		// Serial.print("Before: currentState = ");
 		// Serial.println(currentState);
 		if (currentState == 0) {
@@ -57,7 +57,7 @@ public:
 	
 
 private:
-	MoonshineMachine* moonshineMashine;
+	MoonshineMachine* moonshineMachine;
 
 	int currentState = 0;
 

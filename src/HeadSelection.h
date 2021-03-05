@@ -2,13 +2,13 @@ class HeadSelection : public IRecipe1State {
 
 public:
 	HeadSelection() : IRecipe1State() {};
-    HeadSelection(MoonshineMachine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
+    HeadSelection(MoonshineMachine* moonshineMachine) : IRecipe1State(moonshineMachine) {};
     int  action() override {
 		if (firstAction) {
-			moonshineMashine->s1Rotate(HEAD_SELECTION_SERVO_ANGLE);
+			moonshineMachine->s1Rotate(HEAD_SELECTION_SERVO_ANGLE);
 			firstAction = false;
 		}
-		if (moonshineMashine->isNextButtonPressed())  return 1;
+		if (moonshineMachine->isNextButtonPressed())  return 1;
 		return 0;
 	};
 

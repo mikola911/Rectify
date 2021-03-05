@@ -2,14 +2,14 @@ class Init : public IRecipe1State {
 
 public:
 	Init() : IRecipe1State() {};
-    Init(MoonshineMachine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
+    Init(MoonshineMachine* moonshineMachine) : IRecipe1State(moonshineMachine) {};
 
 	int action() override {
 		selfCheck();
 
 		if (checkStatus > 0) {
-			if (moonshineMashine->isNextButtonPressed()) {
-				moonshineMashine->s1Rotate(CLOSED_SERVO_ANGLE);
+			if (moonshineMachine->isNextButtonPressed()) {
+				moonshineMachine->s1Rotate(CLOSED_SERVO_ANGLE);
 				return 1;
 			}
 			return 0;
