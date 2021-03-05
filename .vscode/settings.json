@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "irecipe1state.h": "c",
+        "init.h": "c",
+        "headselection.h": "c",
+        "errorcodes.h": "c"
+    }
+}
