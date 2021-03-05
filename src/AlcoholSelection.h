@@ -2,7 +2,7 @@ class AlcoholSelection : public IRecipe1State {
 
 public:
 	AlcoholSelection() : IRecipe1State() {};
-    AlcoholSelection(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
+    AlcoholSelection(MoonshineMachine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
 
 	int  action() override {
 		if (firstAction) {
@@ -39,11 +39,11 @@ private:
 		moonshineMashine->s1Rotate(CLOSED_SERVO_ANGLE);
 	};
 
-    /*  Температура которая должна поддерживатся при отборе спирта */
+    /*  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
     float nodeSelectionTemp;
 
     /**
-     * Время которое прошло закрытия клапана в течении которого температура не падает.
+     * пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
      */
     unsigned long overheatTime = 0;
 

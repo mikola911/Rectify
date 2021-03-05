@@ -2,7 +2,7 @@ class Heat : public IRecipe1State {
 
 public:
 	Heat() : IRecipe1State() {};
-    Heat(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
+    Heat(MoonshineMachine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
 
 	int  action() override{
 		updateTemp();
@@ -16,10 +16,10 @@ public:
 		return 0;
 	};
 private:
-	/* системное время, когда менялась температура */
+	/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 	unsigned long tempChangeTime = 0;
 
-    /* Получаем время, в течение которого температура не растет */
+    /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
 	unsigned long getConstantTempTime() {  
 		unsigned long ms = millis();
 		if (abs(previousTemp - moonshineMashine->t1_temp) > HEAT_DELTA_TEMP) {

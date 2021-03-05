@@ -3,6 +3,8 @@
         "irecipe1state.h": "c",
         "init.h": "c",
         "headselection.h": "c",
-        "errorcodes.h": "c"
+        "errorcodes.h": "c",
+        "onewire.h": "c",
+        "tm1637display.h": "c"
     }
 }

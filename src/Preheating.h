@@ -3,7 +3,7 @@ class Preheating : public IRecipe1State
 
 public:
 	Preheating() : IRecipe1State() {};
-    Preheating(MoonshineMashine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
+    Preheating(MoonshineMachine* moonshineMashine) : IRecipe1State(moonshineMashine) {};
 
     int  action() override {
 		updateTemp();

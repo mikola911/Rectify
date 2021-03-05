@@ -10,7 +10,7 @@
 
 class Recipe {
 public:
-	Recipe(MoonshineMashine* moonshineMashine) {
+	Recipe(MoonshineMachine* moonshineMashine) {
 		this->moonshineMashine = moonshineMashine;
 
 		init = Init(this->moonshineMashine);
@@ -57,7 +57,7 @@ public:
 	
 
 private:
-	MoonshineMashine* moonshineMashine;
+	MoonshineMachine* moonshineMashine;
 
 	int currentState = 0;
 
