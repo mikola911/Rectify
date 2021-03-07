@@ -15,7 +15,7 @@ MoonshineMachine::MoonshineMachine() {
 }
 
 void MoonshineMachine::s1Rotate(int angle) {
-    servoValve.attach(servoPin);
+    servoValve.attach(SERVO_PIN);
     servoValve.write(angle);
 	Serial.print("s1Rotate: ");
 	Serial.println(angle);
@@ -50,24 +50,26 @@ void MoonshineMachine::d2Write(int index, int rowNumber, String line) {
 }
 
 void MoonshineMachine::buzzerOff() {
-	noTone(buzzer);
+	noTone(BUZZER_PIN);
 }
+
 void MoonshineMachine::buzzerOn() {
-	tone(buzzer, 200, 400);
+	tone(BUZZER_PIN, 200, 400);
 	delay(400);
-	tone(buzzer, 600, 400);
+	tone(BUZZER_PIN, 600, 400);
 	delay(200);
 }
+
 bool MoonshineMachine::isNextButtonPressed() {
 	d2Write(4, 3, "Press button");
 	bool state = false;
-	if (digitalRead(btn) == 0) {
+	if (digitalRead(ENC_BTN_PIN) == 0) {
 		state = true;
 		for (int i = 0; i < 500; i++) {
-			if (digitalRead(btn)) state = false;
+			if (digitalRead(ENC_BTN_PIN)) state = false;
 		}
 	}
-	while (digitalRead(btn) == 0) { d2Write(3, 3, "Release button"); }
+	while (digitalRead(ENC_BTN_PIN) == 0) { d2Write(3, 3, "Release button"); }
 	if (state) d2Write(0, 3, "                    ");
 	return state;
 }

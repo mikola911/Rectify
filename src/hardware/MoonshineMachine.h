@@ -1,5 +1,7 @@
 #pragma once
 
+#include "hardwareConfig.h"
+
 #include <Servo.h>
 // #include "GyverEncoder.h"
 #include <TM1637Display.h>
@@ -7,14 +9,6 @@
 #include <DallasTemperature.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-#define buzzer 24
-#define ONE_WIRE_BUS 25
-#define servoPin 30
-// #define encCLK 19
-// #define encDT 18
-#define btn 27
-#define ledCLK 52
-#define ledDIO 10
 
 /* hardware managment */
 class MoonshineMachine {
@@ -45,6 +39,8 @@ public:
     /* @return did operator confirmed action */
     bool isNextButtonPressed();
 
+    // #TODO - method to simply read button with debounce
+
     void buzzerOn();
 
     void buzzerOff();
@@ -67,7 +63,7 @@ private:
 
     // Encoder enc(encCLK, encDT, btn);
 
-    TM1637Display display = TM1637Display(ledCLK, ledDIO);
+    TM1637Display display = TM1637Display(DISPLAY_CLK_PIN, DISPLAY_DIO_PIN);
 
     LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4);
 
