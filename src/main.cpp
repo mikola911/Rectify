@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include "MoonshineMachine.h"
-#include "Recipe.h"
+#include "hardware/MoonshineMachine.h"
+#include "recipe/Recipe.h"
 
 MoonshineMachine *moonshineMachine;
 Recipe *recipe;

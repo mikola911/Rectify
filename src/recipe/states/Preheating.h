@@ -1,5 +1,4 @@
-class Preheating : public IRecipe1State
-{
+class Preheating : public IRecipe1State {
 
 public:
 	Preheating() : IRecipe1State() {};

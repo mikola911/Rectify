@@ -1,12 +1,12 @@
 #pragma once
 #include "IRecipe1State.h"
-#include "Init.h"
-#include "Heat.h"
-#include "Preheating.h"
-#include "HeadSelection.h"
-#include "TechnologicalBreak.h"
-#include "TailCollection.h"
-#include "AlcoholSelection.h"
+#include "states/Init.h"
+#include "states/Heat.h"
+#include "states/Preheating.h"
+#include "states/HeadSelection.h"
+#include "states/TechnologicalBreak.h"
+#include "states/TailCollection.h"
+#include "states/AlcoholSelection.h"
 
 class Recipe {
 public:
