@@ -10,6 +10,7 @@ MoonshineMachine::MoonshineMachine() {
 	lcd.backlight();
 
     sensor.begin();
+	sensor.setResolution(11); //12bit, 1/16deg - max resolution
     t1GetTemp();
 }
 
@@ -23,7 +24,6 @@ void MoonshineMachine::s1Rotate(int angle) {
 }
 
 float MoonshineMachine::t1GetTemp() {
-	sensor.setResolution(11); //12bit, 1/16deg - max resolution
     sensor.requestTemperatures();
 	while (!sensor.isConversionComplete()) {}; //#FIXME - delay about 750ms if 12bit resolution
     // t1_temp = sensor.getTempC();

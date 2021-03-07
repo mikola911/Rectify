@@ -1,5 +1,4 @@
 #pragma once
-//#include <Arduino.h>
 
 #include <Servo.h>
 // #include "GyverEncoder.h"
@@ -17,83 +16,61 @@
 #define ledCLK 52
 #define ledDIO 10
 
-/**
- * ����� ���������� ���������.
- * t - ������������
- * s - ������������
- * e - ��������
- * d - �������
- */
-class MoonshineMachine
-{
+/* hardware managment */
+class MoonshineMachine {
 
 public:
-     MoonshineMachine();
+    MoonshineMachine();
 
-     /**
-         * ��������� ����������� � �������� ����.
-         * @param angle ���� � ��������
-         */
-     void s1Rotate(int angle);
+    /**
+     * set servo valve angle
+     * @param angle - target angle in deg
+     */
+    void s1Rotate(int angle);
 
-     /**
-         * �������� ����������� � ������������ 1.
-         * @return  ����������� � ������������ 1 � ��������.
-         */
-     float t1GetTemp();
+    /**
+     * get temperature from t1 and make some side actions //#FIXME
+     * @return {float} temperature in degrees
+     */
+    float t1GetTemp();
 
-     /**
-         * ������� �� ������� ����������
-         * @param index ��������� � ������ (0-19)
-         * @param rowNumber ����� ������ (0-3)
-         * @param line ������
-        */
-     void d2Write(int index, int rowNumber, String line);
+    /**
+     * show something at 4x20 display
+     * @param index index in row (0-19)
+     * @param rowNumber (0-3)
+     * @param line string to show
+    */
+    void d2Write(int index, int rowNumber, String line);
 
-     /**
-         *
-         * @return ������ �� ������ �������� � ���������� ���������������� ���������.
-         */
-     bool isNextButtonPressed();
+    /* @return did operator confirmed action */
+    bool isNextButtonPressed();
 
-     /**
-         * �������� �����.
-         */
-     void buzzerOn();
-     /**
-         * ��������� �����.
-         */
-     void buzzerOff();
+    void buzzerOn();
 
-     /**
-		 * ������� �� �������� ������� �������������� ���������
-		 */
-     void sayHello();
+    void buzzerOff();
 
-     /**
-		 * ������� �� �������� ������� ����� � ������ ������� ���������
-		 */
-     void showTime();
-     /**
-         * ��������� ����������� �������� temp
-         */
-     float t1_temp;
+    /* print initial message in 4x20 display*/
+    void sayHello();
+
+    /* print current time on 4x20 display */
+    void showTime();
+
+    /* last measure of temperature */
+    float t1_temp;
 
 private:
-     OneWire oneWire = OneWire(ONE_WIRE_BUS);
+    OneWire oneWire = OneWire(ONE_WIRE_BUS);
 
-     DallasTemperature sensor = DallasTemperature(&oneWire);
+    DallasTemperature sensor = DallasTemperature(&oneWire);
 
-     Servo servoValve;
+    Servo servoValve;
 
-     // Encoder enc(encCLK, encDT, btn);
+    // Encoder enc(encCLK, encDT, btn);
 
-     TM1637Display display = TM1637Display(ledCLK, ledDIO);
+    TM1637Display display = TM1637Display(ledCLK, ledDIO);
 
-     LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4);
+    LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4);
 
-     /**
-         * ������� �� ��������� ������� ����������� � ������������ 1
-         */
-     void showTemp();
+    /* show temperature on 4-digit display */
+    void showTemp();
 };

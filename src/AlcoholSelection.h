@@ -39,12 +39,10 @@ private:
 		moonshineMachine->s1Rotate(CLOSED_SERVO_ANGLE);
 	};
 
-    /*  ����������� ������� ������ ������������� ��� ������ ������ */
+    /*  temperature of alcohol selection - fixed throw the stage */
     float nodeSelectionTemp;
 
-    /**
-     * ����� ������� ������ �������� ������� � ������� �������� ����������� �� ������.
-     */
+    /* timestamp for overheat */
     unsigned long overheatTime = 0;
 
 };

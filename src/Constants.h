@@ -3,13 +3,13 @@
 /* Valve is closed */
 #define CLOSED_SERVO_ANGLE  180
 
-/* Угол поворота сервомашины при отборе голов */
+/* selection "drop-by-drop" - head selection */
 #define HEAD_SELECTION_SERVO_ANGLE 170
 
-/* Угол поворота сервомашины при отборе спирта */
+/* selection "tiny stream" - alcohol selection */
 #define ALCOHOL_SELECTION_SERVO_ANGLE 160
 
-/* Угол поворота сервомашины при отборе хвостов */
+/* selection "stream" - tail fraction selection */
 #define TAIL_SELECTION_SERVO_ANGLE 120 // #TODO
 
 // Temperature constants 
@@ -28,7 +28,7 @@
 /* allowed delta temperature for heating */
 #define HEAT_DELTA_TEMP 0.5
 
-/* Дельа температуры на которую можно превышать при отборе голов */
+/* allowed delta temperature for alcohol selection*/
 #define ALCOHOL_SELECTION_DELTA_TEMP 0.2
 
 /* maximum of temperature in normal conditions */
@@ -42,13 +42,13 @@
 /* Time interval for catching temp jump */
 #define UPDATE_DELTA_TIME 1000
 
-/* Время в течении которого температура жидкости должна оставаться постоянной.*/
+/* Time interval for holding constant temperature (with allowed delta) */
 #define HEAT_BREAK_TIME 60L*1000L*30L
 
 /* tech break time - need for stable process */
 #define TECHNOLOGICAL_BREAK_TIME 60L*1000L*30L
 
-/* Максимальное время которое прошло закрытия клапана в течении которого температура не падает */
+/* Time interval allowed for overheat without alert */
 #define ALCOHOL_SELECTION_OVERHEAT_TIME 1000L*20L
 
 // Other constants

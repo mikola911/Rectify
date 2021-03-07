@@ -16,10 +16,10 @@ public:
 		return 0;
 	};
 private:
-	/* ��������� �����, ����� �������� ����������� */
+	/* timestamp for the last heat jump */
 	unsigned long tempChangeTime = 0;
 
-    /* �������� �����, � ������� �������� ����������� �� ������ */
+    /* get time interval with constant temperature */
 	unsigned long getConstantTempTime() {  
 		unsigned long ms = millis();
 		if (abs(previousTemp - moonshineMachine->t1_temp) > HEAT_DELTA_TEMP) {

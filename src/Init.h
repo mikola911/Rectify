@@ -18,11 +18,11 @@ public:
 	}
 private:
 	/*
-	 * ��������� ������. 
-	 * 0 - ��� ��, �� ���� ���������. 
-	 * 1 - ��� ��, ������ � ������ ����
-	 * ��� ��� ������ ���� - ������ (���� �� �������)
-	 * ���� �� ��������� - ������� ��� � ������
+	 * machine state 
+	 * 0 - everything is OK, but wait operator confirmation
+	 * 1 - everything is OK, operator confirmed next step
+	 * if status < 0, status is Error (#TODO - error codes)
+	 * status is error before checked up
 	 */
 	int checkStatus = -1;
 
