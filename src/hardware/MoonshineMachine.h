@@ -3,7 +3,7 @@
 #include "hardwareConfig.h"
 
 #include <Servo.h>
-// #include "GyverEncoder.h"
+#include "GyverEncoder.h"
 #include <TM1637Display.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -61,7 +61,7 @@ private:
 
     Servo servoValve;
 
-    // Encoder enc(encCLK, encDT, btn);
+    Encoder enc = Encoder(ENC_CLK_PIN, ENC_DT_PIN, ENC_BTN_PIN);
 
     TM1637Display display = TM1637Display(DISPLAY_CLK_PIN, DISPLAY_DIO_PIN);
 

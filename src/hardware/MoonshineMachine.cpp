@@ -12,6 +12,8 @@ MoonshineMachine::MoonshineMachine() {
     sensor.begin();
 	sensor.setResolution(11); //12bit, 1/16deg - max resolution
     t1GetTemp();
+
+	enc.setTickMode(AUTO);
 }
 
 void MoonshineMachine::s1Rotate(int angle) {
@@ -63,13 +65,8 @@ void MoonshineMachine::buzzerOn() {
 bool MoonshineMachine::isNextButtonPressed() {
 	d2Write(4, 3, "Press button");
 	bool state = false;
-	if (digitalRead(ENC_BTN_PIN) == 0) {
-		state = true;
-		for (int i = 0; i < 500; i++) {
-			if (digitalRead(ENC_BTN_PIN)) state = false;
-		}
-	}
-	while (digitalRead(ENC_BTN_PIN) == 0) { d2Write(3, 3, "Release button"); }
+	if (enc.isPress()) state = true;
+	while (enc.isHold()) { d2Write(3, 3, "Release button"); }
 	if (state) d2Write(0, 3, "                    ");
 	return state;
 }

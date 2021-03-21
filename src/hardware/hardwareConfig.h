@@ -7,8 +7,9 @@
 // servo valve pin
 #define SERVO_PIN 30
 
-// #define ENC_CLK_PIN 19
-// #define ENC_DT_PIN 18
+// encoder pins
+#define ENC_CLK_PIN 19
+#define ENC_DT_PIN 18
 
 // encoder button pin
 #define ENC_BTN_PIN 27
