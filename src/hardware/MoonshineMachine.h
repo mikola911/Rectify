@@ -49,10 +49,12 @@ public:
     void sayHello();
 
     /* print current time on 4x20 display */
-    void showTime();
+    void showTime(unsigned long start = 0);
 
     /* last measure of temperature */
     float t1_temp;
+
+    String calculateTime(unsigned long start, boolean withMillis);
 
 private:
     OneWire oneWire = OneWire(ONE_WIRE_BUS);

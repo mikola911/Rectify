@@ -31,17 +31,17 @@ public:
 		// Serial.print("Before: currentState = ");
 		// Serial.println(currentState);
 		if (currentState == 0) {
-			if (init.action()) currentState++;
+			if (init.action()) changeState();
 		} else if (currentState == 1) {
-			if (preheating.action()) currentState++;
+			if (preheating.action()) changeState();
 		} else if (currentState == 2) {
-			if (heat.action()) currentState++;
+			if (heat.action()) changeState();
 		} else if (currentState == 3) {
-			if (headSelection.action()) currentState++;
+			if (headSelection.action()) changeState();
 		} else if (currentState == 4) {
-			if (technologicalBreak.action()) currentState++;
+			if (technologicalBreak.action()) changeState();
 		} else if (currentState == 5) {
-			if (alcoholSelection.action()) currentState++;
+			if (alcoholSelection.action()) changeState();
 		} else {
 			Serial.print("default: ");
 			Serial.println(currentState);
@@ -54,12 +54,18 @@ public:
 		// Serial.println(currentState);
 	};
 
-	
+	unsigned long stageStartTime = 0;
 
 private:
 	MoonshineMachine* moonshineMachine;
 
 	int currentState = 0;
+
+	void changeState() {
+		currentState++;
+		stageStartTime = millis();
+		// TODO - store temperature
+	}
 
 	Init				init;
 	Preheating			preheating;
@@ -69,7 +75,7 @@ private:
 	AlcoholSelection	alcoholSelection;
 
 	String statesLines[7]={
-		"    Stage:  init    ", 
+		"    Stage:  init    ",
 		" Stage:  preheating ",
 		"   Stage: Heating   ",
 		"   Head Selection   ",

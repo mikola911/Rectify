@@ -12,10 +12,10 @@
 /* selection "stream" - tail fraction selection */
 #define TAIL_SELECTION_SERVO_ANGLE 120 // #TODO
 
-// Temperature constants 
+// Temperature constants
 
 /* system is too hot, end of preheat, need to switch on cooling */
-#define PREHEAT_END_TEMP 45.0
+#define PREHEAT_END_TEMP 30.0
 /* heating too fast, end of preheat, need to switch on cooling */
 #define PREHEAT_DELTA_TEMP 10.0
 

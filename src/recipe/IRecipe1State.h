@@ -11,10 +11,10 @@ public:
 
 	/**
 	 * single action for one temp measure
-	 * @return 
-	 * 0 if everything is ok, and we will run this action again next time. 
-	 * 1 if everything is ok, but this action finished. next time we will run next action. 
-	 * <0 if we have an error and should handle it. 
+	 * @return
+	 * 0 if everything is ok, and we will run this action again next time.
+	 * 1 if everything is ok, but this action finished. next time we will run next action.
+	 * <0 if we have an error and should handle it.
 	 * (#TODO ErrorCodes.h)
 	 */
 	virtual int action() { return 0; };
@@ -48,4 +48,3 @@ private:
     /* timestamp of the last update temperature */
     int lastTempCheckTime = 0;
 };
-

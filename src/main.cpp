@@ -12,7 +12,7 @@ void setup() {
 
 void loop() {
   moonshineMachine->t1GetTemp();
-  moonshineMachine->showTime();
+  moonshineMachine->showTime(recipe->stageStartTime);
 
   recipe->iteration();
 }

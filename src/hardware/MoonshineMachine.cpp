@@ -11,7 +11,7 @@ MoonshineMachine::MoonshineMachine() {
 
     sensor.begin();
 	sensor.setResolution(11); //12bit, 1/16deg - max resolution
-    t1GetTemp();
+	sensor.requestTemperatures();
 
 	enc.setTickMode(AUTO);
 }
@@ -26,10 +26,10 @@ void MoonshineMachine::s1Rotate(int angle) {
 }
 
 float MoonshineMachine::t1GetTemp() {
-    sensor.requestTemperatures();
 	while (!sensor.isConversionComplete()) {}; //#FIXME - delay about 750ms if 12bit resolution
     // t1_temp = sensor.getTempC();
 	t1_temp = sensor.getTempCByIndex(0);
+	sensor.requestTemperatures();
 	//Serial.print("Temp: ");
 	//Serial.println(t1_temp);
 	showTemp();
@@ -71,22 +71,33 @@ bool MoonshineMachine::isNextButtonPressed() {
 	return state;
 }
 
-void MoonshineMachine::showTime() {
-	unsigned long current = millis();
-	byte Millis = current % 100;
+String MoonshineMachine::calculateTime(unsigned long start = 0, boolean withMillis = true) {
+	unsigned long current = millis() - start;
+
 	byte Seconds = current / 1000 % 60;
 	byte Minutes = current / 1000 / 60 % 60;
 	byte Hours = current / 1000 / 60 / 60;
+
 	String Time;
 	if (Hours > 9) Time = String(Hours) + ':';
 	else Time = '0' + String(Hours) + ':';
 	if (Minutes > 9) Time += String(Minutes) + ':';
 	else Time += '0' + String(Minutes) + ':';
-	if (Seconds > 9) Time += String(Seconds) + '.';
-	else Time += '0' + String(Seconds) + '.';
-	if (Millis > 9) Time += String(Millis);
-	else Time += '0' + String(Millis);
+	if (Seconds > 9) Time += String(Seconds);
+	else Time += '0' + String(Seconds);
 
-	lcd.setCursor(9, 0);
-	lcd.print(Time);
+	if (withMillis) {
+		Time += '.';
+		byte Millis = current % 100;
+		if (Millis > 9) Time += String(Millis);
+		else Time += '0' + String(Millis);
+	}
+
+	return Time;
+}
+
+void MoonshineMachine::showTime(unsigned long start = 0) {
+	String TotalTime = calculateTime() + '/' + calculateTime(start, false);
+	lcd.setCursor(0, 0);
+	lcd.print(TotalTime);
 }

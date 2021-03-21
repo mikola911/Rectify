@@ -20,12 +20,15 @@ private:
 	unsigned long tempChangeTime = 0;
 
     /* get time interval with constant temperature */
-	unsigned long getConstantTempTime() {  
+	unsigned long getConstantTempTime() {
 		unsigned long ms = millis();
 		if (abs(previousTemp - moonshineMachine->t1_temp) > HEAT_DELTA_TEMP) {
 			tempChangeTime = ms;
 		}
+		// FIXME - is it a function?
+		String time = moonshineMachine->calculateTime(tempChangeTime, false)
+			+ " from " + String(HEAT_BREAK_TIME/60000)  + "min";
+		moonshineMachine->d2Write(0,2, time);
 		return (ms - tempChangeTime);
 	};
 };
-
