@@ -15,6 +15,7 @@ public:
 		String time = moonshineMachine->calculateTime(startMs, false)
 			+ " from " + String(TECHNOLOGICAL_BREAK_TIME/60000)  + "min";
 		moonshineMachine->d2Write(0,2, time);
+		if (moonshineMachine->isDoubleClicked()) return true; // #FIXME
 		return ms - startMs > TECHNOLOGICAL_BREAK_TIME;
 	};
 

@@ -71,6 +71,15 @@ bool MoonshineMachine::isNextButtonPressed() {
 	return state;
 }
 
+bool MoonshineMachine::isDoubleClicked() {
+	d2Write(4, 3, "Double click to skip");
+	if (enc.isDouble()) {
+		d2Write(0, 3, "                    ");
+		return true;
+	}
+	return false;
+}
+
 String MoonshineMachine::calculateTime(unsigned long start = 0, boolean withMillis = true) {
 	unsigned long current = millis() - start;
 

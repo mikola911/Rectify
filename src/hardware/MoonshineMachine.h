@@ -39,6 +39,9 @@ public:
     /* @return did operator confirmed action */
     bool isNextButtonPressed();
 
+    /* @return did operator double clicked to skip something */
+    bool isDoubleClicked();
+
     // #TODO - method to simply read button with debounce
 
     void buzzerOn();
@@ -49,7 +52,7 @@ public:
     void sayHello();
 
     /* print current time on 4x20 display */
-    void showTime(unsigned long start = 0);
+    void showTime(unsigned long start);
 
     /* last measure of temperature */
     float t1_temp;

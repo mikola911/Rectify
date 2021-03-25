@@ -13,6 +13,11 @@ public:
 			waitOperatorAction(); // #FIXME
 			return 1;
 		}
+		if ((moonshineMachine->t1_temp > HEAT_MIN_TEMP) && moonshineMachine->isDoubleClicked()) { // #FIXME
+			Serial.print("Exit by operator click");
+			Serial.println(moonshineMachine->t1_temp);
+			return 1;
+		}
 		return 0;
 	};
 private:
