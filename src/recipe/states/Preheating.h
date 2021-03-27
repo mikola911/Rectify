@@ -5,8 +5,6 @@ public:
     Preheating(MoonshineMachine* moonshineMachine) : IRecipe1State(moonshineMachine) {};
 
     int  action() override {
-		updateTemp();
-
 		if (moonshineMachine->t1_temp > PREHEAT_END_TEMP) {
 			Serial.print("Exit by large temp: ");
 			Serial.println(moonshineMachine->t1_temp);
@@ -19,7 +17,7 @@ public:
 			waitOperatorAction();
 			return 1;
 		}
+		updateTemp();
 		return 0;
 	};
 };
-

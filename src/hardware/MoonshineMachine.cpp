@@ -26,13 +26,13 @@ void MoonshineMachine::s1Rotate(int angle) {
 }
 
 float MoonshineMachine::t1GetTemp() {
-	while (!sensor.isConversionComplete()) {}; //#FIXME - delay about 750ms if 12bit resolution
-    // t1_temp = sensor.getTempC();
-	t1_temp = sensor.getTempCByIndex(0);
-	sensor.requestTemperatures();
-	//Serial.print("Temp: ");
-	//Serial.println(t1_temp);
-	showTemp();
+	if (sensor.isConversionComplete()) {
+		t1_temp = sensor.getTempCByIndex(0);
+		sensor.requestTemperatures();
+		//Serial.print("Temp: ");
+		//Serial.println(t1_temp);
+		showTemp();
+	}
     return t1_temp;
 }
 
@@ -51,6 +51,10 @@ void MoonshineMachine::d2Write(int index, int rowNumber, String line) {
     lcd.print(line);
 }
 
+void MoonshineMachine::d2clear() {
+	lcd.clear();
+}
+
 void MoonshineMachine::buzzerOff() {
 	noTone(BUZZER_PIN);
 }
@@ -62,22 +66,17 @@ void MoonshineMachine::buzzerOn() {
 	delay(200);
 }
 
-bool MoonshineMachine::isNextButtonPressed() {
-	d2Write(4, 3, "Press button");
+bool MoonshineMachine::isNextButtonPressed(bool skip = false) {
+	if (skip) {
+		d2Write(0, 3, "Press button to skip");
+	} else {
+		d2Write(4, 3, "Press button");
+	}
 	bool state = false;
 	if (enc.isPress()) state = true;
-	while (enc.isHold()) { d2Write(3, 3, "Release button"); }
+	while (enc.isHold()) { d2Write(0, 3, "   Release button   "); }
 	if (state) d2Write(0, 3, "                    ");
 	return state;
-}
-
-bool MoonshineMachine::isDoubleClicked() {
-	d2Write(4, 3, "Double click to skip");
-	if (enc.isDouble()) {
-		d2Write(0, 3, "                    ");
-		return true;
-	}
-	return false;
 }
 
 String MoonshineMachine::calculateTime(unsigned long start = 0, boolean withMillis = true) {

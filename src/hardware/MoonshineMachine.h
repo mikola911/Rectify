@@ -23,7 +23,7 @@ public:
     void s1Rotate(int angle);
 
     /**
-     * get temperature from t1 and make some side actions //#FIXME
+     * get temperature from t1 and make some side actions
      * @return {float} temperature in degrees
      */
     float t1GetTemp();
@@ -36,13 +36,11 @@ public:
     */
     void d2Write(int index, int rowNumber, String line);
 
+    // clear display
+    void d2clear();
+
     /* @return did operator confirmed action */
-    bool isNextButtonPressed();
-
-    /* @return did operator double clicked to skip something */
-    bool isDoubleClicked();
-
-    // #TODO - method to simply read button with debounce
+    bool isNextButtonPressed(bool skip = false);
 
     void buzzerOn();
 

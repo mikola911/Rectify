@@ -18,7 +18,7 @@ public:
 	}
 private:
 	/*
-	 * machine state 
+	 * machine state
 	 * 0 - everything is OK, but wait operator confirmation
 	 * 1 - everything is OK, operator confirmed next step
 	 * if status < 0, status is Error (#TODO - error codes)
@@ -28,9 +28,9 @@ private:
 
 	void selfCheck() {
 		if (checkStatus < 1) {
-			// #TODO
+			Serial.println("SelfCheck");
+			// #TODO - сheck display (i2c adr) and thermo sensor
 			checkStatus = 1;
 		}
 	};
 };
-

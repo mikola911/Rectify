@@ -61,9 +61,15 @@ private:
 
 	int currentState = 0;
 
-	void changeState() {
+	void changeState() { // #TODO: not only `++` changes
+		Serial.print("Change state: last state was ");
+		Serial.print(statesLines[currentState]);
 		currentState++;
+		Serial.print(", new state is ");
+		Serial.print(statesLines[currentState]);
+		Serial.println();
 		stageStartTime = millis();
+		moonshineMachine->d2clear();
 		// TODO - store temperature
 	}
 
