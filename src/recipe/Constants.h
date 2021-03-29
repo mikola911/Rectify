@@ -4,13 +4,13 @@
 #define CLOSED_SERVO_ANGLE  180
 
 /* selection "drop-by-drop" - head selection */
-#define HEAD_SELECTION_SERVO_ANGLE 170
+#define HEAD_SELECTION_SERVO_ANGLE 150
 
 /* selection "tiny stream" - alcohol selection */
-#define ALCOHOL_SELECTION_SERVO_ANGLE 160
+#define ALCOHOL_SELECTION_SERVO_ANGLE 120
 
 /* selection "stream" - tail fraction selection */
-#define TAIL_SELECTION_SERVO_ANGLE 120 // #TODO
+#define TAIL_SELECTION_SERVO_ANGLE 90 // #TODO
 
 // Temperature constants
 
@@ -29,7 +29,7 @@
 #define HEAT_DELTA_TEMP 0.5
 
 /* allowed delta temperature for alcohol selection*/
-#define ALCOHOL_SELECTION_DELTA_TEMP 0.2
+#define ALCOHOL_SELECTION_DELTA_TEMP 0.25
 
 /* maximum of temperature in normal conditions */
 #define TEMP_MAX 102.0
