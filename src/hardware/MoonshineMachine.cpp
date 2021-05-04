@@ -10,10 +10,10 @@ MoonshineMachine::MoonshineMachine() {
 	lcd.backlight();
 
     sensor.begin();
-	sensor.setResolution(11); //12bit, 1/16deg - max resolution
-	sensor.requestTemperatures();
+	t1SetResolution(11);
 
 	enc.setTickMode(AUTO);
+	enc.resetStates();
 }
 
 void MoonshineMachine::s1Rotate(int angle) {
@@ -34,6 +34,11 @@ float MoonshineMachine::t1GetTemp() {
 		showTemp();
 	}
     return t1_temp;
+}
+
+void MoonshineMachine::t1SetResolution(byte resolution) {
+	sensor.setResolution(resolution); //12bit, 1/16deg - max resolution
+	sensor.requestTemperatures();
 }
 
 void MoonshineMachine::showTemp() {
@@ -66,7 +71,7 @@ void MoonshineMachine::buzzerOn() {
 	delay(200);
 }
 
-bool MoonshineMachine::isNextButtonPressed(bool skip = false) {
+bool MoonshineMachine::isNextButtonPressed(bool skip) {
 	if (skip) {
 		d2Write(0, 3, "Press button to skip");
 	} else {

@@ -6,38 +6,45 @@ public:
 
 	int  action() override {
 		unsigned long ms = millis();
+
 		if (firstAction) {
+			moonshineMachine->t1SetResolution(12);
 			firstAction = false;
 			overheatTime = ms;
 			updateNodeSelectionTemp(moonshineMachine->t1_temp);
 		}
 
-		if (moonshineMachine->isNextButtonPressed()) { //#FIXME
+		if (moonshineMachine->isNextButtonPressed()) { //#FIXME - temporary ability
 			updateNodeSelectionTemp(moonshineMachine->t1_temp);
 		}
 
 		if (ms - overheatTime > ALCOHOL_SELECTION_OVERHEAT_TIME) {
-			Serial.println("ladgeTempAfterClosingTimeMax ON");
 			moonshineMachine->buzzerOn();
 		} else {
 			moonshineMachine->buzzerOff();
 		}
 
 		if (moonshineMachine->t1_temp > nodeSelectionTemp + ALCOHOL_SELECTION_DELTA_TEMP) {
-			Serial.println("closeValve");
-			closeValve();
+			if (isValveOpen == true) {
+				closeValve();
+				isValveOpen = false;
+			// #TODO - if too hot, some time do not open again (trottle for edge temperature)
+			}
 			moonshineMachine->d2Write(10, 2, "too hot");
 		} else {
-			Serial.println("openValve");
-			openValve();
+			if (isValveOpen == false) {
+				openValve();
+				isValveOpen = true;
+			}
 			overheatTime = millis();
 			moonshineMachine->d2Write(10, 2, "so good");
 		}
 		return 0;
 	};
-// TODO - store state of servo and do nothing is state is OK
+
 private:
 	bool firstAction = true;
+	bool isValveOpen = false;
 
     void openValve() {
 		moonshineMachine->s1Rotate(ALCOHOL_SELECTION_SERVO_ANGLE);

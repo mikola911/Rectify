@@ -24,7 +24,7 @@ protected:
     MoonshineMachine* moonshineMachine;
 
 	/* temperature at last updateTemp */
-    int previousTemp = 0XFF;// #FIXME - may be possible move to moonshineMachine
+    int previousTemp = 0; // #FIXME - may be possible move to moonshineMachine
 
     /* idle while operator confirm step */
 	void waitOperatorAction() { // #FIXME - remove while

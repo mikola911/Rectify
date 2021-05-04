@@ -5,13 +5,15 @@ public:
     Heat(MoonshineMachine* moonshineMachine) : IRecipe1State(moonshineMachine) {};
 
 	int  action() override{
-		if ((moonshineMachine->t1_temp > HEAT_MIN_TEMP) && (getConstantTempTime() > HEAT_BREAK_TIME)) {
+		getConstantTempTime();
+
+		if ((moonshineMachine->t1_temp > HEAT_MIN_TEMP) && (constTempTime > HEAT_BREAK_TIME)) {
 			Serial.print("Normal exit. Temp: ");
 			Serial.println(moonshineMachine->t1_temp);
 			waitOperatorAction(); // #FIXME
 			return 1;
 		}
-		if ((moonshineMachine->t1_temp > HEAT_MIN_TEMP) && moonshineMachine->isNextButtonPressed(true)) { // #FIXME
+		if ((moonshineMachine->t1_temp > HEAT_MIN_TEMP) && moonshineMachine->isNextButtonPressed(true)) {
 			Serial.print("Exit by operator click");
 			Serial.println(moonshineMachine->t1_temp);
 			return 1;
@@ -21,18 +23,29 @@ public:
 	};
 private:
 	/* timestamp for the last heat jump */
-	unsigned long tempChangeTime = 0;
+	unsigned long tempChangeTimestamp = 0;
+
+	/* internal with constant temperature */
+	unsigned long constTempTime = 0;
 
     /* get time interval with constant temperature */
 	unsigned long getConstantTempTime() {
 		unsigned long ms = millis();
-		if (abs(previousTemp - moonshineMachine->t1_temp) > HEAT_DELTA_TEMP) {
-			tempChangeTime = ms;
+
+		if ( abs(moonshineMachine->t1_temp - previousTemp) > HEAT_DELTA_TEMP) {
+			tempChangeTimestamp = ms;
+			constTempTime = 0;
+
+			String time = "00:00:00 from " + String(HEAT_BREAK_TIME/60000)  + "min";
+			moonshineMachine->d2Write(0,2, time);
+
+			return;
 		}
-		// FIXME - is it a function?
-		String time = moonshineMachine->calculateTime(tempChangeTime, false)
+
+		String time = moonshineMachine->calculateTime(tempChangeTimestamp, false)
 			+ " from " + String(HEAT_BREAK_TIME/60000)  + "min";
 		moonshineMachine->d2Write(0,2, time);
-		return (ms - tempChangeTime);
+
+		constTempTime = ms - tempChangeTimestamp;
 	};
 };

@@ -28,6 +28,8 @@ public:
      */
     float t1GetTemp();
 
+    void t1SetResolution(byte resolution);
+
     /**
      * show something at 4x20 display
      * @param index index in row (0-19)
