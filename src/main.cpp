@@ -1,9 +1,18 @@
 #include <Arduino.h>
+#include "hardware/MoonshineMachine.h"
+#include "recipe/Recipe.h"
+
+MoonshineMachine *moonshineMachine;
+Recipe *recipe;
 
 void setup() {
-  // put your setup code here, to run once:
+  moonshineMachine = new MoonshineMachine();
+  recipe = new Recipe(moonshineMachine);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  moonshineMachine->t1GetTemp();
+  moonshineMachine->showTime(recipe->stageStartTime);
+
+  recipe->iteration();
 }
